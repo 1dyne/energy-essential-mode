@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from PIL import Image; print\\('Pillow OK'\\)\" 2>&1 || python3 -c \"from PIL import Image; print\\('Pillow OK'\\)\" 2>&1)",
+      "Bash(python - << 'EOF'\nfrom PIL import Image\nimport os\n\nfolder = r\"C:\\\\Users\\\\EAN11\\\\Desktop\\\\energy-essential-mode\\\\project\\\\assets\\\\교체 고민중\"\nfiles = [f for f in os.listdir\\(folder\\) if f.endswith\\('.png'\\)]\n\nfor fname in files:\n    path = os.path.join\\(folder, fname\\)\n    img = Image.open\\(path\\)\n    print\\(f\"{fname}: {img.size}, mode={img.mode}\"\\)\n    if img.mode == 'RGBA':\n        bbox = img.getbbox\\(\\)\n        print\\(f\"  -> bounding box: {bbox}\"\\)\n    else:\n        print\\(f\"  -> no alpha channel, skipping\"\\)\nEOF)",
+      "Bash(python - << 'EOF'\nfrom PIL import Image\nimport os\n\nfolder = r\"C:\\\\Users\\\\EAN11\\\\Desktop\\\\energy-essential-mode\\\\project\\\\assets\\\\교체 고민중\"\nfiles = [f for f in os.listdir\\(folder\\) if f.endswith\\('.png'\\)]\n\nfor fname in files:\n    path = os.path.join\\(folder, fname\\)\n    img = Image.open\\(path\\)\n    if img.mode != 'RGBA':\n        print\\(f\"SKIP: {fname} \\(no alpha\\)\"\\)\n        continue\n    bbox = img.getbbox\\(\\)\n    if bbox is None:\n        print\\(f\"SKIP: {fname} \\(fully transparent\\)\"\\)\n        continue\n    orig_size = img.size\n    trimmed = img.crop\\(bbox\\)\n    trimmed.save\\(path\\)\n    print\\(f\"OK: {fname}  {orig_size} -> {trimmed.size}\"\\)\n\nEOF)"
+    ]
+  }
+}

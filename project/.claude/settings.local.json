@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(copy /Y \"assets_backup\\\\hana_look_1.png\" \"assets\\\\hana_look_1.png\")",
+      "Bash(copy /Y \"assets_backup\\\\hana_look_2.png\" \"assets\\\\hana_look_2.png\")",
+      "Bash(copy /Y \"assets_backup\\\\hana_look_3.png\" \"assets\\\\hana_look_3.png\")",
+      "Bash(copy /Y \"assets_backup\\\\hana_look_4.png\" \"assets\\\\hana_look_4.png\")"
+    ]
+  }
+}
